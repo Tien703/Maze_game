@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class GenAlgo(metaclass=ABC):
+class GenAlgo(ABC):
     def __init__(self,widht, height):
         """
         Maze generator Constructor
@@ -23,11 +23,13 @@ class GenAlgo(metaclass=ABC):
         self.w = widht
         self.h = height
         self.W = widht*2 + 1
-        self.height = height*2 + 1
+        self.H= height*2 + 1
 
     
     @abstractmethod
-    def _get_neighbour(self,grid, r, c, not_visted = True ):
+    def generate():
+        return None
+    def _find_neighbors(self, r, c, grid, not_visted = True ):
         """ find all neighbor of current cell, visted or not 
         args:
             grid: maze matrix 1 is walls or not visted, 0 is visted or grid space
@@ -44,7 +46,7 @@ class GenAlgo(metaclass=ABC):
             neighbour.append((r+2, c))
         if c > 1  and grid[r][c-2] ==not_visted:
             neighbour.append((r, c-2))
-        if c <self.W -2 and grid[r][c-2] ==not_visted:
+        if c <self.W -2 and grid[r][c+2] ==not_visted:
             neighbour.append((r, c+2))
 
         return neighbour
